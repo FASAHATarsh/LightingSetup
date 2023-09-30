@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Color Wheel</title>
+    <style>
+        body{
+            min-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .color-picker{
+            position: relative;
+
+        }
+        .color-indicator{
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            background-color: #fff;
+            border-radius: 20px;
+            vertical-align: middle;
+        
+        }
+        #color-picker{
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 40px;
+            visibility: visible;
+
+        }
+
+    </style>
+</head>
+<body id="color-indicator">
+    <div class="color-picker"></div>
+    <div id="color-picker"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+    <script>
+        let colorIndicator=document.getElementById('color-indicator');
+        const colorPicker = new iro.ColorPicker('#color-picker',{
+            width:250, color:'#FFF'
+        });
+        colorPicker.on('color:change',function(color){
+            colorIndicator.style.backgroundColor =color.hexString;
+
+        });
+    </script>
+    <script>
+        const picker =document.querySelector('#color-picker');
+        document.body.addEventListener('keydown', (ev)=>{
+            if(ev.key=="h"){
+                picker.style.visibility="hidden";
+            }
+            if(ev.key=="s"){
+                x="visible"
+                picker.style.visibility="visible";
+            }
+        });
+        
+    </script>
+</body>
